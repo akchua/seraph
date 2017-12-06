@@ -1,0 +1,1 @@
+java -Dloader.path=/usr/local/seraph/config -jar -Xmx3072m ../bin/hrms-0.0.1.jar

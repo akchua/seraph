@@ -1,0 +1,1 @@
+package com.seraph.hrms.database.prototype;import java.util.List;import com.seraph.hrms.database.entity.UserImage;/** * @author  Adrian Jasper K. Chua * @version 1.0 * @since   6 December 2017 */public interface UserImagePrototype extends Prototype<UserImage, Long> {		List<UserImage> findAllByUserId(Long userId);}
