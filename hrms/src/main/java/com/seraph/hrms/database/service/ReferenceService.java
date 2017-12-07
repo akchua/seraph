@@ -1,0 +1,1 @@
+package com.seraph.hrms.database.service;import com.seraph.hrms.database.entity.Reference;import com.seraph.hrms.database.prototype.ReferencePrototype;/** * @author  Adrian Jasper K. Chua * @version 1.0 * @since   6 December 2017 */public interface ReferenceService extends Service<Reference, Long>, ReferencePrototype {}

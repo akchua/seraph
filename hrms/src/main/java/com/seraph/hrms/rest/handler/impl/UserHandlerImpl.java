@@ -7,8 +7,6 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -361,11 +359,6 @@ public class UserHandlerImpl implements UserHandler {
 		}
 		
 		return result;
-	}
-	
-	@Override
-	public List<UserType> getUserTypeList() {
-		return Stream.of(UserType.values()).collect(Collectors.toList());
 	}
 	
 	private void setUser(User user, UserFormBean userForm) {

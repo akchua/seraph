@@ -1,0 +1,1 @@
+package com.seraph.hrms.database.service;import com.seraph.hrms.database.entity.Employment;import com.seraph.hrms.database.prototype.EmploymentPrototype;/** * @author  Adrian Jasper K. Chua * @version 1.0 * @since   6 December 2017 */public interface EmploymentService extends Service<Employment, Long>, EmploymentPrototype {}

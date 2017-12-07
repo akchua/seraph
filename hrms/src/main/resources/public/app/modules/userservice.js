@@ -125,12 +125,6 @@ define(['jquery'], function ($) {
     				settingsFormData: settingsFormData
     			} 
     		});
-    	},
-    	
-    	getUserTypeList: function() {
-    		return $.ajax({
-    			url: '/services/user/usertype'
-    		});
     	}
 	};
 });

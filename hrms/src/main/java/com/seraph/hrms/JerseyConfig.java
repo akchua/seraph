@@ -7,6 +7,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
 import com.seraph.hrms.rest.endpoint.ConstantsEndpoint;
+import com.seraph.hrms.rest.endpoint.PersonnelEndpoint;
 import com.seraph.hrms.rest.endpoint.SecurityEndpoint;
 import com.seraph.hrms.rest.endpoint.UserEndpoint;
 
@@ -25,6 +26,7 @@ public class JerseyConfig extends ResourceConfig {
 		
 		register(SecurityEndpoint.class);
 		register(UserEndpoint.class);
+		register(PersonnelEndpoint.class);
 		register(ConstantsEndpoint.class);
 	}
 }

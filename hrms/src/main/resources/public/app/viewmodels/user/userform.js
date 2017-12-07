@@ -1,4 +1,5 @@
-define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/userservice'], function (dialog, app, ko, userService) {
+define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/userservice', 'modules/constantsservice'], 
+		function (dialog, app, ko, userService, constantsService) {
     var UserForm = function(user, title) {
     	this.user = user;
     	this.title = title;
@@ -46,7 +47,7 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/userservice'], fu
     	self.userFormModel.itemsPerPage(self.user.itemsPerPage);
     	if(self.user.userType) self.userFormModel.userType(self.user.userType.name);
     	
-    	userService.getUserTypeList().done(function(userTypeList) {
+    	constantsService.getUserTypeList().done(function(userTypeList) {
     		self.userTypeList(userTypeList);
     		if(self.user.userType) self.userFormModel.userType(self.user.userType.name);
     	});

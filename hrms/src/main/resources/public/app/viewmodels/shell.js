@@ -8,6 +8,14 @@
  	    { route: 'user', moduleId: 'viewmodels/user/user', title: 'Users', nav: true, hash: '#user' }
  	];
 	
+	var manageroute = [
+   	  	{ route: 'manage', moduleRootId: 'viewmodels/manage', title: '', nav: true, hash: '#manage',
+   	  		childRoutes: [
+   	  		    { route: 'personnel', moduleId: 'personnel/personnel', title: 'Personnels', nav: true, hash: 'personnel' }
+   	  		]
+   	  	}
+   	];
+	
 	var Shell = function() {
 		this.router = router;
 		
@@ -45,6 +53,8 @@
     		switch(app.user.userType.name) {
 	    		case 'ADMINISTRATOR':
 	    			self.routes = self.routes.concat(userroute);
+	    			self.routes = self.routes.concat(manageroute);
+	    			break;
     		}
 		}
     		

@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import com.seraph.hrms.database.entity.base.BaseObject;
 import com.seraph.hrms.enums.UserType;
@@ -104,6 +105,7 @@ public class User extends BaseObject {
 	}
 
 	@Basic
+	@NotNull
 	@Column(name = "username")
 	public String getUsername() {
 		return username;
@@ -114,6 +116,7 @@ public class User extends BaseObject {
 	}
 
 	@Basic
+	@NotNull
 	@Column(name = "password")
 	public String getPassword() {
 		return password;
@@ -124,6 +127,7 @@ public class User extends BaseObject {
 	}
 
 	@Basic
+	@NotNull
 	@Column(name = "items_per_page")
 	public Integer getItemsPerPage() {
 		return itemsPerPage;
@@ -134,6 +138,7 @@ public class User extends BaseObject {
 	}
 
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	@Column(name = "user_type", length = 50)
 	public UserType getUserType() {
 		return userType;

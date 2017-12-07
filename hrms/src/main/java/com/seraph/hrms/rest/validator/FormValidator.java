@@ -20,5 +20,7 @@ public interface FormValidator<T extends FormBean> {
 	
 	String validateString(String s, int min, int max);
 	
+	String validateStringNull(String s, int min, int max);
+	
 	String validateEmail(String email);
 }

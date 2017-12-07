@@ -13,7 +13,6 @@ import com.seraph.hrms.beans.SettingsFormBean;
 import com.seraph.hrms.beans.UserFormBean;
 import com.seraph.hrms.database.entity.User;
 import com.seraph.hrms.database.entity.UserImage;
-import com.seraph.hrms.enums.UserType;
 import com.seraph.hrms.objects.ObjectList;
 
 /**
@@ -50,6 +49,4 @@ public interface UserHandler {
 	ResultBean resetPassword(Long userId);
 	
 	ResultBean changeSettings(SettingsFormBean settingsForm);
-	
-	List<UserType> getUserTypeList();
 }

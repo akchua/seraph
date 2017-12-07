@@ -28,7 +28,6 @@ import com.seraph.hrms.beans.SettingsFormBean;
 import com.seraph.hrms.beans.UserFormBean;
 import com.seraph.hrms.database.entity.User;
 import com.seraph.hrms.database.entity.UserImage;
-import com.seraph.hrms.enums.UserType;
 import com.seraph.hrms.objects.ObjectList;
 import com.seraph.hrms.rest.handler.UserHandler;
 
@@ -150,12 +149,5 @@ public class UserEndpoint {
 	public ResultBean changeSettings(@FormParam("settingsFormData") String settingsFormData) throws IOException {
 		final SettingsFormBean settingsForm = new ObjectMapper().readValue(settingsFormData, SettingsFormBean.class);
 		return userHandler.changeSettings(settingsForm);
-	}
-	
-	@GET
-	@Path("/usertype")
-	@Produces({ MediaType.APPLICATION_JSON })
-	public List<UserType> getUserTypeList() {
-		return userHandler.getUserTypeList();
 	}
 }
