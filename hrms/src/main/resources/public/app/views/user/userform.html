@@ -30,8 +30,10 @@
 							<label class="control-label" for="contactNumber">Contact Number</label>
 							<div class="controls">
 								<input data-bind="textInput: userFormModel.contactNumber" type="text" id="contactNumber" name="contactNumber" placeholder="" class="form-control input-lg">
-								<p data-bind="text: errors.contactNumber" class="text-danger"></p>
-								<p class="help-block">Mobile[09xx-xxx-xxxx] / Landline[(xx)xxx-xx-xx]</p>
+								<p>
+									<span data-bind="text: errors.contactNumber" class="text-danger"></span>
+									<span class="help-block">Mobile[09xx-xxx-xxxx] / Landline[(xx)xxx-xx-xx]</span>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -57,8 +59,10 @@
 							<label class="control-label" for="username">Username</label>
 							<div class="controls">
 								<input data-bind="textInput: userFormModel.username" type="text" id="username" name="username" placeholder="" class="form-control input-lg">
-								<p data-bind="text: errors.username" class="text-danger"></p>
-								<p class="help-block">Username can contain any letters or numbers, at least 3 to 30 characters</p>
+								<p>
+									<span data-bind="text: errors.username" class="text-danger"></span>
+									<span class="help-block">Username can contain any letters or numbers, at least 3 to 30 characters</span>
+								</p>
 							</div>
 						</div>
 		
@@ -66,8 +70,10 @@
 							<label class="control-label" for="email">E-mail</label>
 							<div class="controls">
 								<input data-bind="textInput: userFormModel.emailAddress" type="email" id="email" name="email" placeholder="" class="form-control input-lg">
-								<p data-bind="text: errors.emailAddress" class="text-danger"></p>
-								<p class="help-block">Your E-mail address (make sure you can access your email)</p>
+								<p>
+									<span data-bind="text: errors.emailAddress" class="text-danger"></span>
+									<span class="help-block">Your E-mail address (make sure you can access your email)</span>
+								</p>
 							</div>
 						</div>
 					
@@ -75,8 +81,10 @@
 							<label class="control-label" for="password">Password</label>
 							<div class="controls">
 								<input data-bind="textInput: userFormModel.password" type="password" id="password" name="password" placeholder="" class="form-control input-lg">
-								<p data-bind="text: errors.password" class="text-danger"></p>
-								<p class="help-block">Password should be at least 6 to 20 characters</p>
+								<p>
+									<span data-bind="text: errors.password" class="text-danger"></span>
+									<span class="help-block">Password should be at least 6 to 20 characters</span>
+								</p>
 							</div>
 						</div>
 		
@@ -84,8 +92,10 @@
 							<label class="control-label" for="password_confirm">Confirm Password</label>
 							<div class="controls">
 								<input data-bind="textInput: userFormModel.confirmPassword" type="password" id="password_confirm" name="password_confirm" placeholder="" class="form-control input-lg">
-								<p data-bind="text: errors.confirmPassword" class="text-danger"></p>
-								<p class="help-block">Please confirm password</p>
+								<p>
+									<span data-bind="text: errors.confirmPassword" class="text-danger"></span>
+									<span class="help-block"> Please confirm password</span>
+								</p>
 							</div>
 						</div>
 					</div>

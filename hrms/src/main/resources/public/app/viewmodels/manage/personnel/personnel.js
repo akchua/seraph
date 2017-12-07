@@ -1,5 +1,5 @@
-define(['durandal/app', 'knockout', 'modules/personnelservice'/*, 'viewmodels/personnel/personnelform', 'viewmodels/personnel/personnelview'*/],
-		function (app, ko, personnelService/*, PersonnelForm, PersonnelView*/) {
+define(['durandal/app', 'knockout', 'modules/personnelservice', 'viewmodels/manage/personnel/personnelform'/*, 'viewmodels/personnel/personnelview'*/],
+		function (app, ko, personnelService, PersonnelForm/*, PersonnelView*/) {
     var Personnel = function() {
     	this.personnelList = ko.observable();
     	
@@ -42,10 +42,10 @@ define(['durandal/app', 'knockout', 'modules/personnelservice'/*, 'viewmodels/pe
     
     Personnel.prototype.add = function() {
     	var self = this;
-    	alert('add');
-    	/*PersonnelForm.show(new Object(),  'Create Personnel').done(function() {
+    	
+    	PersonnelForm.show(new Object(),  'New Personnel').done(function() {
     		self.refreshPersonnelList();
-    	});*/
+    	});
     };
     
     Personnel.prototype.view = function(personnelId) {

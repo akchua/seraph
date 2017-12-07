@@ -1,0 +1,141 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Basic Information</h3>
+	</div>
+	
+	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label" for="personnelPosition">Position Applied</label>
+			<div class="controls">
+				<select data-bind="options: personnelPositionList, optionsValue: 'name', optionsText: 'displayName', optionsCaption: '-- Select Position --', value: personnelFormModel.personnelPosition" class="form-control select-lg" id="personnelPosition"></select>
+				<p data-bind="text: errors.personnelPosition" class="text-danger"></p>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="firstName">First Name</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.firstName" type="text" id="firstName" name="firstName" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.firstName" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="lastName">Last Name</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.lastName" type="text" id="lastName" name="lastName" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.lastName" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="middleName">Middle Name</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.middleName" type="text" id="middleName" name="middleName" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.middleName" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="contactNumber">Contact Number</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.contactNumber" type="text" id="contactNumber" name="contactNumber" placeholder="" class="form-control input-lg">
+				<p> 
+					<span data-bind="text: errors.contactNumber" class="text-danger"></span>
+					<span class="help-block">Mobile[09xx-xxx-xxxx] / Landline[(xx)xxx-xx-xx]</span>
+				</p>
+			</div>
+			<label class="control-label" for="cityAddress">City Address <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.cityAddress" type="text" id="cityAddress" name="contactNumber" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.cityAddress" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="birthdate">Birthdate</label>
+			<div class="controls">
+				<input data-bind="value: personnelFormModel.birthdate" type="date" id="birthdate" name="birthdate" class="form-control" />
+				<p data-bind="text: errors.birthdate" class="text-danger"></p>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="gender">Gender</label>
+			<div class="controls">
+				<select data-bind="options: genderList, optionsValue: 'name', optionsText: 'displayName', optionsCaption: '-- Select Gender --', value: personnelFormModel.gender" class="form-control select-lg" id="personnelPosition"></select>
+				<p data-bind="text: errors.gender" class="text-danger"></p>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="civilStatus">Civil Status</label>
+			<div class="controls">
+				<select data-bind="options: civilStatusList, optionsValue: 'name', optionsText: 'displayName', optionsCaption: '-- Select Civil Status --', value: personnelFormModel.civilStatus" class="form-control select-lg" id="personnelPosition"></select>
+				<p data-bind="text: errors.civilStatus" class="text-danger"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-warning">
+	<div class="panel-heading">
+		<h3 class="panel-title">Physical Information</h3>
+	</div>
+	
+	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label" for="height">Height</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.height" type="text" id="height" name="height" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.height" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="weight">Weight</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.weight" type="text" id="weight" name="weight" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.weight" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="hairColor">Hair Color <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.hairColor" type="text" id="hairColor" name="hairColor" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.hairColor" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="eyeColor">Eye Color <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.eyeColor" type="text" id="eyeColor" name="eyeColor" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.eyeColor" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="complexion">Complexion <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.complexion" type="text" id="complexion" name="complexion" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.complexion" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="identifyingMarks">Identifying Marks</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.identifyingMarks" type="text" id="identifyingMarks" name="identifyingMarks" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.identifyingMarks" class="text-danger"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">Other Information</h3>
+	</div>
+	
+	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label" for="motherMaidenName">Mother's Maiden Name <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.motherMaidenName" type="text" id="motherMaidenName" name="motherMaidenName" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.motherMaidenName" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="birthplace">Birthplace</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.birthplace" type="text" id="birthplace" name="birthplace" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.birthplace" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="provincialAddress">Provincial Address <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.provincialAddress" type="text" id="provincialAddress" name="provincialAddress" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.provincialAddress" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="dialectsSpoken">Dialects Spoken</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.dialectsSpoken" type="text" id="dialectsSpoken" name="dialectsSpoken" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.dialectsSpoken" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="religion">Religion</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.religion" type="text" id="religion" name="religion" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.religion" class="text-danger"></p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.seraph.hrms.beans.PersonnelFormBean;
 import com.seraph.hrms.enums.CivilStatus;
 import com.seraph.hrms.enums.Gender;
+import com.seraph.hrms.enums.PersonnelPosition;
 
 /**
  * @author  Adrian Jasper K. Chua
@@ -25,12 +26,16 @@ public class PersonnelFormValidator extends AbstractFormValidator<PersonnelFormB
 		
 		String temp = "";
 		
+		temp = validatePersonnelPosition(personnelForm.getPersonnelPosition());
+		if(!temp.isEmpty()) errors.put("personnelPosition", temp);
 		temp = validateFirstName(personnelForm.getFirstName());
 		if(!temp.isEmpty()) errors.put("firstName", temp);
 		temp = validateLastName(personnelForm.getLastName());
 		if(!temp.isEmpty()) errors.put("lastName", temp);
 		temp = validateMiddleName(personnelForm.getMiddleName());
 		if(!temp.isEmpty()) errors.put("middleName", temp);
+		temp = validateContactNumber(personnelForm.getContactNumber());
+		if(!temp.isEmpty()) errors.put("contactNumber", temp);
 		temp = validateMotherMaidenName(personnelForm.getMotherMaidenName());
 		if(!temp.isEmpty()) errors.put("motherMaidenName", temp);
 		temp = validateCityAddress(personnelForm.getCityAddress());
@@ -61,9 +66,9 @@ public class PersonnelFormValidator extends AbstractFormValidator<PersonnelFormB
 		if(!temp.isEmpty()) errors.put("dialectsSpoken", temp);
 		temp = validateReligion(personnelForm.getReligion());
 		if(!temp.isEmpty()) errors.put("religion", temp);
-		temp = validateNameOfSpouse(personnelForm.getNameOfSpouse());
+		temp = validateNameOfSpouse(personnelForm.getNameOfSpouse(), personnelForm.getCivilStatus());
 		if(!temp.isEmpty()) errors.put("nameOfSpouse", temp);
-		temp = validateOccupationOfSpouse(personnelForm.getOccupationOfSpouse());
+		temp = validateOccupationOfSpouse(personnelForm.getOccupationOfSpouse(), personnelForm.getCivilStatus());
 		if(!temp.isEmpty()) errors.put("occupationOfSpouse", temp);
 		temp = validateNameOfFather(personnelForm.getNameOfFather());
 		if(!temp.isEmpty()) errors.put("nameOfFather", temp);
@@ -107,6 +112,10 @@ public class PersonnelFormValidator extends AbstractFormValidator<PersonnelFormB
 		return errors;
 	}
 	
+	private String validatePersonnelPosition(PersonnelPosition personnelPosition) {
+		return notNull(personnelPosition);
+	}
+	
 	private String validateFirstName(String firstName) {
 		return validateString(firstName, 2, 20);
 	}
@@ -117,6 +126,10 @@ public class PersonnelFormValidator extends AbstractFormValidator<PersonnelFormB
 	
 	private String validateMiddleName(String middleName) {
 		return validateString(middleName, 2, 20);
+	}
+	
+	private String validateContactNumber(String contactNumber) {
+		return validateString(contactNumber, 2, 20);
 	}
 	
 	private String validateMotherMaidenName(String motherMaidenName) {
@@ -193,12 +206,18 @@ public class PersonnelFormValidator extends AbstractFormValidator<PersonnelFormB
 		return validateString(religion, 2, 20);
 	}
 	
-	private String validateNameOfSpouse(String nameOfSpouse) {
+	private String validateNameOfSpouse(String nameOfSpouse, CivilStatus civilStatus) {
+		if(civilStatus != null && civilStatus.equals(CivilStatus.MARRIED)) {
+			return validateString(nameOfSpouse, 2, 60);
+		}
 		return validateStringNull(nameOfSpouse, 2, 60);
 	}
 	
-	private String validateOccupationOfSpouse(String occupationOfSpouse) {
-		return validateStringNull(occupationOfSpouse, 2, 40);
+	private String validateOccupationOfSpouse(String occupationOfSpouse, CivilStatus civilStatus) {
+		if(civilStatus != null && civilStatus.equals(CivilStatus.MARRIED)) {
+			return validateString(occupationOfSpouse, 2, 60);
+		}
+		return validateStringNull(occupationOfSpouse, 2, 60);
 	}
 	
 	private String validateNameOfFather(String nameOfFather) {

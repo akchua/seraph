@@ -1,0 +1,50 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Background</h3>
+	</div>
+	
+	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label" for="highSchool">High School</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.highSchool" type="text" id="highSchool" name="highSchool" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.highSchool" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="highSchoolGradYear">High School Graduation Year</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.highSchoolGradYear" type="text" id="highSchoolGradYear" name="highSchoolGradYear" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.highSchoolGradYear" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="vocationalSchool">Vocational School <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.vocationalSchool" type="text" id="vocationalSchool" name="vocationalSchool" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.vocationalSchool" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="vocationalSchoolGradYear">Vocational School Graduation Year <span class="text-muted">(Optional)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.vocationalSchoolGradYear" type="text" id="vocationalSchoolGradYear" name="vocationalSchoolGradYear" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.vocationalSchoolGradYear" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="college">College</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.college" type="text" id="college" name="college" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.college" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="collegeDegree">College Degree</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.collegeDegree" type="text" id="collegeDegree" name="collegeDegree" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.collegeDegree" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="collegeGradYear">College Graduation Year</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.collegeGradYear" type="text" id="collegeGradYear" name="collegeGradYear" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.collegeGradYear" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="lastSecuritySchool">Last Attended Security Training School</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.lastSecuritySchool" type="text" id="lastSecuritySchool" name="lastSecuritySchool" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.lastSecuritySchool" class="text-danger"></p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -13,13 +13,15 @@ import com.seraph.hrms.enums.PersonnelPosition;
  */
 public class PersonnelFormBean extends FormBean {
 
-private PersonnelPosition personnelPosition;
+	private PersonnelPosition personnelPosition;
 	
 	private String firstName;
 	
 	private String lastName;
 	
 	private String middleName;
+	
+	private String contactNumber;
 	
 	private String motherMaidenName;
 	
@@ -123,6 +125,14 @@ private PersonnelPosition personnelPosition;
 
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 	public String getMotherMaidenName() {

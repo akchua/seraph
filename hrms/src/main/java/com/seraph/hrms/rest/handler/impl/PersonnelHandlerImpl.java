@@ -12,7 +12,6 @@ import com.seraph.hrms.beans.ResultBean;
 import com.seraph.hrms.database.entity.Personnel;
 import com.seraph.hrms.database.service.PersonnelService;
 import com.seraph.hrms.enums.Color;
-import com.seraph.hrms.enums.Gender;
 import com.seraph.hrms.objects.ObjectList;
 import com.seraph.hrms.rest.handler.PersonnelHandler;
 import com.seraph.hrms.rest.validator.PersonnelFormValidator;
@@ -58,8 +57,8 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 			result.setSuccess(personnelService.insert(personnel) != null);
 			if(result.getSuccess()) {
 				result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " added personnel - " 
-									+ Html.text(Color.BLUE, (personnel.getGender().equals(Gender.MALE) ? "Mr." : "Ms.") 
-									+ " " + personnel.getFirstName() + " " + personnel.getLastName()) + ". Thank you."));
+								+ Html.text(Color.BLUE, 
+										personnel.getNamePrefix() + " " + personnel.getFirstName() + " " + personnel.getLastName()) + ". Thank you."));
 			} else {
 				result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
 			}
@@ -85,8 +84,8 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 			result.setSuccess(personnelService.update(personnel));
 			if(result.getSuccess()) {
 				result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " updated " 
-									+ Html.text(Color.BLUE, (personnel.getGender().equals(Gender.MALE) ? "Mr." : "Ms.") 
-									+ " " + personnel.getFirstName() + " " + personnel.getLastName()) + "'s information. Thank you."));
+								+ Html.text(Color.BLUE,
+										personnel.getNamePrefix() + " " + personnel.getFirstName() + " " + personnel.getLastName()) + "'s information. Thank you."));
 			} else {
 				result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
 			}
@@ -109,8 +108,8 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 			result.setSuccess(personnelService.delete(personnelId));
 			if(result.getSuccess()) {
 				result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " removed personnel - " 
-						+ Html.text(Color.BLUE, (personnel.getGender().equals(Gender.MALE) ? "Mr." : "Ms.") 
-						+ " " + personnel.getFirstName() + " " + personnel.getLastName()) + ". Thank you."));
+						+ Html.text(Color.BLUE, 
+								personnel.getNamePrefix() + " " + personnel.getFirstName() + " " + personnel.getLastName()) + ". Thank you."));
 			} else {
 				result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
 			}
@@ -126,6 +125,7 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 		personnel.setFirstName(personnelForm.getFirstName());
 		personnel.setLastName(personnelForm.getLastName());
 		personnel.setMiddleName(personnelForm.getMiddleName());
+		personnel.setContactNumber(personnelForm.getContactNumber());
 		personnel.setMotherMaidenName(personnelForm.getMotherMaidenName());
 		personnel.setCityAddress(personnelForm.getCityAddress());
 		personnel.setProvincialAddress(personnelForm.getProvincialAddress());

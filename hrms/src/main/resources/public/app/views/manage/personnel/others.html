@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">About You</h3>
+	</div>
+	
+	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label" for="organization">Name of Organization <span class="text-muted">(If member of any)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.organization" type="text" id="organization" name="organization" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.organization" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="specialSkills">Special Skills</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.specialSkills" type="text" id="specialSkills" name="specialSkills" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.specialSkills" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="hobbies">Hobbies</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.hobbies" type="text" id="hobbies" name="hobbies" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.hobbies" class="text-danger"></p>
+			</div>
+		</div>
+	</div>
+</div>

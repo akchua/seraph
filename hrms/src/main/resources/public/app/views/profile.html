@@ -39,8 +39,10 @@
 							<label class="control-label" for="contactNumber">Contact Number</label>
 							<div class="controls">
 								<input data-bind="textInput: userFormModel.contactNumber" type="text" id="contactNumber" name="contactNumber" placeholder="" class="form-control input-lg">
-								<p data-bind="text: errors.contactNumber" class="text-danger"></p>
-								<p class="help-block">Mobile[09xx-xxx-xxxx] / Landline[(xx)xxx-xx-xx]</p>
+								<p>
+									<span data-bind="text: errors.contactNumber" class="text-danger"></span>
+									<span class="help-block">Mobile[09xx-xxx-xxxx] / Landline[(xx)xxx-xx-xx]</span>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -58,8 +60,10 @@
 							<label class="control-label" for="email">E-mail</label>
 							<div class="controls">
 								<input data-bind="textInput: userFormModel.emailAddress" type="email" id="email" name="email" placeholder="" class="form-control input-lg">
-								<p data-bind="text: errors.emailAddress" class="text-danger"></p>
-								<p class="help-block">Your E-mail address (make sure you can access your email)</p>
+								<p>
+									<span data-bind="text: errors.emailAddress" class="text-danger"></span>
+									<span class="help-block">Your E-mail address (make sure you can access your email)</span>
+								</p>
 							</div>
 						</div>
 					</div>

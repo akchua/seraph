@@ -1,0 +1,47 @@
+<div class="modal-content modal-lg">
+  	<form>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" data-bind="click: cancel">&times;</button>
+			<h3 align="center"><span data-bind="text: title"></span></h3>
+		</div>
+	  
+		<div class="modal-body">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#personal" data-toggle="tab">Personal</a></li>
+					<li><a href="#relations" data-toggle="tab">Family</a></li>
+					<li><a href="#education" data-toggle="tab">Education</a></li>
+					<li><a href="#others" data-toggle="tab">Others</a></li>
+				</ul>
+				
+				<div class="tab-content">
+					<div class="tab-pane active" id="personal">
+						<div class="row">
+							<div data-bind="compose: { view: 'manage/personnel/personal' }"></div>
+						</div>
+					</div>
+					<div class="tab-pane" id="relations">
+						<div class="row">
+							<div data-bind="compose: { view: 'manage/personnel/relations' }"></div>
+						</div>
+					</div>
+					<div class="tab-pane" id="education">
+						<div class="row">
+							<div data-bind="compose: { view: 'manage/personnel/education' }"></div>
+						</div>
+					</div>
+					<div class="tab-pane" id="others">
+						<div class="row">
+							<div data-bind="compose: { view: 'manage/personnel/others' }"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="submit" data-bind="click: save, enable: enableSave">Next</button>
+			<button class="btn btn-warning" data-bind="click: cancel">Cancel</button>
+		</div>
+  	</form>
+</div>

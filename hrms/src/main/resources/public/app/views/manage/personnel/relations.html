@@ -1,0 +1,71 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Family</h3>
+	</div>
+	
+	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label" for="nameOfSpouse">Name of Spouse <span class="text-muted">(If Married)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.nameOfSpouse" type="text" id="nameOfSpouse" name="nameOfSpouse" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.nameOfSpouse" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="occupationOfSpouse">Occupation of Spouse <span class="text-muted">(If Married)</span></label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.occupationOfSpouse" type="text" id="occupationOfSpouse" name="occupationOfSpouse" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.occupationOfSpouse" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="nameOfFather">Name of Father</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.nameOfFather" type="text" id="nameOfFather" name="nameOfFather" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.nameOfFather" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="occupationOfFather">Occupation of Father</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.occupationOfFather" type="text" id="occupationOfFather" name="occupationOfFather" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.occupationOfFather" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="nameOfMother">Name of Mother</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.nameOfMother" type="text" id="nameOfMother" name="nameOfMother" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.nameOfMother" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="occupationOfMother">Occupation of Mother</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.occupationOfMother" type="text" id="occupationOfMother" name="occupationOfMother" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.occupationOfMother" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="recommendedBy">Recommended By</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.recommendedBy" type="text" id="recommendedBy" name="recommendedBy" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.recommendedBy" class="text-danger"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-danger">
+	<div class="panel-heading">
+		<h3 class="panel-title">In Case of Emergency</h3>
+	</div>
+	
+	<div class="panel-body">
+		<div class="control-group">
+			<label class="control-label" for="emergencyContactPerson">Emergency Contact Person</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.emergencyContactPerson" type="text" id="emergencyContactPerson" name="emergencyContactPerson" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.emergencyContactPerson" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="contactPersonRelation">Relationship with Contact Person</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.contactPersonRelation" type="text" id="contactPersonRelation" name="contactPersonRelation" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.contactPersonRelation" class="text-danger"></p>
+			</div>
+			<label class="control-label" for="contactPersonAddress">Address of Contact Person</label>
+			<div class="controls">
+				<input data-bind="textInput: personnelFormModel.contactPersonAddress" type="text" id="contactPersonAddress" name="contactPersonAddress" placeholder="" class="form-control input-lg">
+				<p data-bind="text: errors.contactPersonAddress" class="text-danger"></p>
+			</div>
+		</div>
+	</div>
+</div>
