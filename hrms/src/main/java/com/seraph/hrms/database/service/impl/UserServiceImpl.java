@@ -46,6 +46,6 @@ public class UserServiceImpl
 
 	@Override
 	public ObjectList<User> findAllOrderByNameAndUserType(int pageNumber, int resultsPerPage, String searchKey) {
-		return dao.findAllWithPagingAndOrder(pageNumber, resultsPerPage, searchKey, new Order[] { Order.asc("userType"), Order.asc("lastName"), Order.asc("firstName")  });
+		return dao.findAllWithPagingAndOrder(pageNumber, resultsPerPage, searchKey, new Order[] { Order.asc("userType"), Order.asc("lastName"), Order.asc("firstName") });
 	}
 }

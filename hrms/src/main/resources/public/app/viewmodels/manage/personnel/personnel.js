@@ -1,5 +1,5 @@
-define(['durandal/app', 'knockout', 'modules/personnelservice', 'viewmodels/manage/personnel/personnelform'/*, 'viewmodels/personnel/personnelview'*/],
-		function (app, ko, personnelService, PersonnelForm/*, PersonnelView*/) {
+define(['durandal/app', 'knockout', 'modules/personnelservice', 'viewmodels/manage/personnel/personnelform', 'viewmodels/manage/personnel/editselect'/*, 'viewmodels/personnel/personnelview'*/],
+		function (app, ko, personnelService, PersonnelForm, EditSelect/*, PersonnelView*/) {
     var Personnel = function() {
     	this.personnelList = ko.observable();
     	
@@ -32,9 +32,9 @@ define(['durandal/app', 'knockout', 'modules/personnelservice', 'viewmodels/mana
     	var self = this;
     	
     	personnelService.getPersonnelList(self.currentPage(), self.searchKey()).done(function(data) {
-    		/*for(i = 0; i < data.list.length; i++) {
+    		for(i = 0; i < data.list.length; i++) {
     			data.list[i].imagePath = personnelService.getPersonnelImageByFileName(data.list[i].image);
-    		}*/
+    		}
     		self.personnelList(data.list);
     		self.totalItems(data.total);
     	});
@@ -58,12 +58,12 @@ define(['durandal/app', 'knockout', 'modules/personnelservice', 'viewmodels/mana
     
     Personnel.prototype.edit = function(personnelId) {
     	var self = this;
-    	alert('edit');
-    	/*personnelService.getPersonnel(personnelId).done(function(personnel) {
-    		PersonnelForm.show(personnel,  'Edit Personnel').done(function() {
-        		self.refreshPersonnelList();
-        	});
-    	});*/
+    	
+    	personnelService.getPersonnel(personnelId).done(function(personnel) {
+    		EditSelect.show(personnel).done(function() {
+    			self.refreshPersonnelList();
+    		});
+    	});
     };
     
     Personnel.prototype.remove = function(personnelId, lastName, firstName) {

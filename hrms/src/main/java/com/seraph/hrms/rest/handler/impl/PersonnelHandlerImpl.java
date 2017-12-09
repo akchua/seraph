@@ -1,7 +1,14 @@
 package com.seraph.hrms.rest.handler.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,13 +16,17 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seraph.hrms.UserContextHolder;
 import com.seraph.hrms.beans.PersonnelFormBean;
 import com.seraph.hrms.beans.ResultBean;
+import com.seraph.hrms.constants.FileConstants;
 import com.seraph.hrms.database.entity.Personnel;
+import com.seraph.hrms.database.entity.PersonnelImage;
+import com.seraph.hrms.database.service.PersonnelImageService;
 import com.seraph.hrms.database.service.PersonnelService;
 import com.seraph.hrms.enums.Color;
 import com.seraph.hrms.objects.ObjectList;
 import com.seraph.hrms.rest.handler.PersonnelHandler;
 import com.seraph.hrms.rest.validator.PersonnelFormValidator;
 import com.seraph.hrms.utility.Html;
+import com.seraph.hrms.utility.StringHelper;
 
 /**
  * @author  Adrian Jasper K. Chua
@@ -30,16 +41,32 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 	private PersonnelService personnelService;
 	
 	@Autowired
+	private PersonnelImageService personnelImageService;
+	
+	@Autowired
 	private PersonnelFormValidator personnelFormValidator;
+	
+	@Autowired
+	private FileConstants fileConstants;
 	
 	@Override
 	public Personnel getPersonnel(Long personnelId) {
 		return personnelService.find(personnelId);
 	}
+	
+	@Override
+	public File findPersonnelImageByFileName(String fileName) {
+		return new File(fileConstants.getPersonnelImageHome() + fileName);
+	}
 
 	@Override
 	public ObjectList<Personnel> getPersonnelObjectList(Integer pageNumber, String searchKey) {
 		return personnelService.findAllOrderByNameAndPosition(pageNumber, UserContextHolder.getItemsPerPage(), searchKey);
+	}
+	
+	@Override
+	public List<PersonnelImage> getPersonnelImageList(Long personnelId) {
+		return personnelImageService.findAllByPersonnelId(personnelId);
 	}
 
 	@Override
@@ -65,6 +92,42 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 		} else {
 			result = new ResultBean(Boolean.FALSE, "");
 			result.addToExtras("errors", errors);
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public ResultBean savePersonnelImage(Long personnelId, InputStream in, FormDataContentDisposition info)
+			throws IOException {
+		final ResultBean result;
+		final String fileName = UUID.randomUUID().toString() + "." + StringHelper.getFileExtension(info.getFileName());
+		
+		File imageFile = new File(fileConstants.getPersonnelImageHome() + fileName);
+		if(imageFile.getParentFile() != null) imageFile.getParentFile().mkdirs();
+		
+		if(!imageFile.exists()) {
+			Files.copy(in, imageFile.toPath());
+			final Personnel personnel = personnelService.find(personnelId);
+			if(personnel != null) {
+				result = new ResultBean();
+				
+				final PersonnelImage personnelImage = new PersonnelImage();
+				personnelImage.setPersonnel(personnel);
+				personnelImage.setFileName(fileName);
+				
+				result.setSuccess(personnelImageService.insert(personnelImage) != null);
+				if(result.getSuccess()) {
+					this.setPersonnelImageAsThumbnail(personnelImage.getId());
+					result.setMessage(Html.line(Color.GREEN, "Upload Successful."));
+				} else {
+					result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
+				}
+			} else {
+				result = new ResultBean(Boolean.FALSE, Html.line(Html.text(Color.RED, "Failed") + " to load personnel. Please refresh the page."));
+			}
+		} else {
+			result = new ResultBean(Boolean.FALSE, "Error please try uploading again.");
 		}
 		
 		return result;
@@ -96,6 +159,29 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 		
 		return result;
 	}
+	
+	@Override
+	public ResultBean setPersonnelImageAsThumbnail(Long personnelImageId) {
+		final ResultBean result;
+		final PersonnelImage personnelImage = personnelImageService.find(personnelImageId);
+		
+		if(personnelImage != null) {
+			result = new ResultBean();
+			final Personnel personnel = personnelImage.getPersonnel();
+			
+			personnel.setImage(personnelImage.getFileName());
+			result.setSuccess(personnelService.update(personnel));
+			if(result.getSuccess()) {
+				result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " set Image as picture for " + Html.text(Color.BLUE, personnel.getFormattedName()) + "."));
+			} else {
+				result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
+			}
+		} else {
+			result = new ResultBean(Boolean.FALSE, Html.line(Html.text(Color.RED, "Failed") + " to load personnel image. Please refresh the page."));
+		}
+		
+		return result;
+	}
 
 	@Override
 	public ResultBean removePersonnel(Long personnelId) {
@@ -115,6 +201,34 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 			}
 		} else {
 			result = new ResultBean(Boolean.FALSE, Html.line(Html.text(Color.RED, "Failed") + " to load personnel. Please refresh the page."));
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public ResultBean removePersonnelImage(Long personnelImageId) {
+		final ResultBean result;
+		final PersonnelImage personnelImage = personnelImageService.find(personnelImageId);
+		
+		if(personnelImage != null) {
+			result = new ResultBean();
+			final Personnel personnel = personnelImage.getPersonnel();
+			
+			// REMOVE AS THUMBNAIL IF DELETED
+			if(personnel.getImage().equals(personnelImage.getFileName())) {
+				personnel.setImage(fileConstants.getImageDefaultFileName());
+				personnelService.update(personnel);
+			}
+			
+			result.setSuccess(personnelImageService.delete(personnelImage));
+			if(result.getSuccess()) {
+				result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " removed Image."));
+			} else {
+				result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
+			}
+		} else {
+			result = new ResultBean(Boolean.FALSE, Html.line(Html.text(Color.RED, "Failed") + " to load personnel image. Please refresh the page."));
 		}
 		
 		return result;

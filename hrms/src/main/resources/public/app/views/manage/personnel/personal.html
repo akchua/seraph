@@ -7,14 +7,14 @@
 		<div class="control-group">
 			<label class="control-label" for="personnelPosition">Position Applied</label>
 			<div class="controls">
-				<select data-bind="options: personnelPositionList, optionsValue: 'name', optionsText: 'displayName', optionsCaption: '-- Select Position --', value: personnelFormModel.personnelPosition" class="form-control select-lg" id="personnelPosition"></select>
+				<select data-bind="options: personnelPositionList, optionsValue: 'name', optionsText: 'displayName', optionsCaption: '-- Select Position --', value: personnelFormModel.personnelPosition" class="form-control select-lg autofocus" id="personnelPosition"></select>
 				<p data-bind="text: errors.personnelPosition" class="text-danger"></p>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="firstName">First Name</label>
 			<div class="controls">
-				<input data-bind="textInput: personnelFormModel.firstName" type="text" id="firstName" name="firstName" placeholder="" class="form-control input-lg autofocus">
+				<input data-bind="textInput: personnelFormModel.firstName" type="text" id="firstName" name="firstName" placeholder="" class="form-control input-lg">
 				<p data-bind="text: errors.firstName" class="text-danger"></p>
 			</div>
 			<label class="control-label" for="lastName">Last Name</label>

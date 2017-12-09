@@ -28,7 +28,7 @@
 			
 			<tbody data-bind="foreach: { data: personnelList, as: 'personnel' }">
 				<tr>
-					<td>temp<!-- <img data-bind="attr: { src : personnel.imagePath }" class="img-circle text-center" width="28px" height="28px"> --></td>
+					<td><img data-bind="attr: { src : personnel.imagePath }" class="img-circle text-center" width="28px" height="28px"></td>
 					<td data-bind="text: personnel.id" class = "text-center"></td>
 					<td data-bind="text: personnel.formattedName"></td>
 					<td data-bind="text: personnel.personnelPosition.displayName"></td>
