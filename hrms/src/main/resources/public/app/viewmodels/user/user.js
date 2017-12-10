@@ -45,7 +45,7 @@ define(['durandal/app', 'knockout', 'modules/userservice', 'viewmodels/user/user
     User.prototype.add = function() {
     	var self = this;
     	
-    	UserForm.show(new Object(),  'Create User').done(function() {
+    	UserForm.show(new Object(),  'New User').done(function() {
     		self.refreshUserList();
     	});
     };
@@ -58,10 +58,10 @@ define(['durandal/app', 'knockout', 'modules/userservice', 'viewmodels/user/user
     	});
     };
     
-    User.prototype.resetPassword = function(userId, lastName, firstName) {
+    User.prototype.resetPassword = function(userId, formattedName) {
     	var self = this;
     	
-    	app.showMessage('<p>Are you sure you want to reset password of User <span class="text-primary">' + firstName + ' ' + lastName + '</span>?</p>'
+    	app.showMessage('<p>Are you sure you want to reset password of User <span class="text-primary">' + formattedName + '</span>?</p>'
     				+ '<p>The new password will be sent to the user\'s email.</p>',
 				'<p class="text-danger">Confirm Reset Password</p>',
 				[{ text: 'Yes', value: true }, { text: 'No', value: false }])

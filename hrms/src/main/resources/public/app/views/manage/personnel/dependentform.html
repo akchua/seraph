@@ -1,0 +1,47 @@
+<div class="modal-content">
+  	<form>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" data-bind="click: cancel">&times;</button>
+			<h3 data-bind="text: title" align="center"></h3>
+		</div>
+	  
+		<div class="modal-body">
+			<div class="row">
+				<div class="control-group">
+					<label class="control-label" for="firstName">First Name</label>
+					<div class="controls">
+						<input data-bind="textInput: dependentFormModel.firstName" type="text" id="firstName" name="firstName" placeholder="" class="form-control input-lg autofocus">
+						<p data-bind="text: errors.firstName" class="text-danger"></p>
+					</div>
+					<label class="control-label" for="lastName">Last Name</label>
+					<div class="controls">
+						<input data-bind="textInput: dependentFormModel.lastName" type="text" id="lastName" name="lastName" placeholder="" class="form-control input-lg">
+						<p data-bind="text: errors.lastName" class="text-danger"></p>
+					</div>
+					<label class="control-label" for="age">Age</label>
+					<div class="controls">
+						<input data-bind="textInput: dependentFormModel.age" type="number" id="age" name="age" placeholder="" class="form-control input-lg">
+						<p data-bind="text: errors.age" class="text-danger"></p>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="gender">Gender</label>
+						<div class="controls">
+							<select data-bind="options: genderList, optionsValue: 'name', optionsText: 'displayName', optionsCaption: '-- Select Gender --', value: dependentFormModel.gender" class="form-control select-lg" id="personnelPosition"></select>
+							<p data-bind="text: errors.gender" class="text-danger"></p>
+						</div>
+					</div>
+					<label class="control-label" for="relationship">Relationship with Dependent</label>
+					<div class="controls">
+						<input data-bind="textInput: dependentFormModel.relationship" type="text" id="relationship" name="relationship" placeholder="" class="form-control input-lg">
+						<p data-bind="text: errors.age" class="text-danger"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+  
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="submit" data-bind="click: save">Save</button>
+	        <button class="btn btn-warning" data-bind="click: cancel">Cancel</button>
+		</div>
+  	</form>
+</div>

@@ -13,11 +13,11 @@ import com.seraph.hrms.utility.EmailUtil;
 public abstract class AbstractFormValidator<T extends FormBean> 
 		implements FormValidator<T> {
 	
-	public String notNull(Object o) {
+	protected String notNull(Object o) {
 		return o != null ? "" : "This field cannot be empty.";
 	}
 	
-	public String notNull(String s, Function<String, String> f) {
+	protected String notNull(String s, Function<String, String> f) {
 		String ret = notNull(s);
 		if(!ret.isEmpty()) return ret;
 		
@@ -26,14 +26,14 @@ public abstract class AbstractFormValidator<T extends FormBean>
 		return ret;
 	}
 	
-	public String validateString(String s, int min, int max) {
+	protected String validateString(String s, int min, int max) {
 		String ret = notNull(s);
 		if(!ret.isEmpty()) return ret;
 		
 		return validateStringNull(s, min, max);
 	}
 	
-	public String validateStringNull(String s, int min, int max) {
+	protected String validateStringNull(String s, int min, int max) {
 		if(s == null) return "";
 		String ret = "";
 		if(min <= -1 && max <= -1) return s;
@@ -50,7 +50,7 @@ public abstract class AbstractFormValidator<T extends FormBean>
 		return ret;
 	}
 	
-	public String validateInteger(Integer i, int min, int max) {
+	protected String validateInteger(Integer i, int min, int max) {
 		String ret = notNull(i);
 		if(!ret.isEmpty()) return ret;
 		
@@ -59,7 +59,16 @@ public abstract class AbstractFormValidator<T extends FormBean>
 		return ret;
 	}
 	
-	public String validateEmail(String email) {
+	protected String validateFloat(Float f, float min, float max) {
+		String ret = notNull(f);
+		if(!ret.isEmpty()) return ret;
+		
+		ret = f >= min && f <= max ? "" : "Value must be between " + min + " to " + max + ".";
+		
+		return ret;
+	}
+	
+	protected String validateEmail(String email) {
 		String ret = notNull(email);
 		if(!ret.isEmpty()) return ret;
 		
