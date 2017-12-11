@@ -1,5 +1,5 @@
-define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/personnelservice', 'modules/constantsservice'], 
-		function (dialog, app, ko, personnelService, constantsService) {
+define(['plugins/dialog', 'durandal/app', 'knockout', 'jquery', 'modules/personnelservice', 'modules/constantsservice'], 
+		function (dialog, app, ko, $, personnelService, constantsService) {
     var PersonnelForm = function(personnel, title) {
     	this.personnel = personnel;
     	this.title = title;
@@ -130,7 +130,7 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/personnelservice'
     	self.personnelFormModel.middleName(self.personnel.middleName);
     	self.personnelFormModel.contactNumber(self.personnel.contactNumber);
     	self.personnelFormModel.cityAddress(self.personnel.cityAddress);
-    	self.personnelFormModel.birthdate(self.personnel.birthdate);
+    	self.personnelFormModel.birthdate(self.personnel.formattedBirthdate);
     	if(self.personnel.gender) self.personnelFormModel.gender(self.personnel.gender.name);
     	if(self.personnel.civilStatus) self.personnelFormModel.civilStatus(self.personnel.civilStatus.name);
     	
@@ -200,6 +200,7 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/personnelservice'
         	if(result.success) {
         		dialog.close(self);
         	} else {
+        		$('#personnelFormModal').animate({ scrollTop: 0 }, 'slow');
         		self.enableSave(true);
         		self.errors.personnelPosition(result.extras.errors.personnelPosition);
         		self.errors.firstName(result.extras.errors.firstName);

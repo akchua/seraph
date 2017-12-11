@@ -1,0 +1,28 @@
+<div class="modal-content modal-lg">
+	<form>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" data-bind="click: cancel">&times;</button>
+			<h3 align="center"><span data-bind="text: title"></span></h3>
+		</div>
+	  
+		<div class="modal-body">
+			<label class="control-label" for="response">
+				<span>Survey Question <span data-bind="text: index() + 1"></span> of <span data-bind="text: totalQuestions"></span></span>
+				<br/>
+				<br/>
+				<span data-bind="text: question"></span>
+				<br/>
+				<span data-bind="text: answerGuide" class="text-muted"></span>
+			</label>
+			<div class="controls">
+				<input data-bind="textInput: surveyResponseFormModel.response" type="text" id="response" name="response" placeholder="" class="form-control input-lg autofocus">
+				<p data-bind="text: errors.response" class="text-danger"></p>
+			</div>
+		</div>
+	 
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="submit" data-bind="click: next"><span data-bind="if: showNext">Next</span><span data-bind="ifnot: showNext">Finish</span></button>
+			<button class="btn btn-warning pull-left" data-bind="click: previous, visible: showPrevious">Previous</button>
+		</div>
+	</form>
+</div>

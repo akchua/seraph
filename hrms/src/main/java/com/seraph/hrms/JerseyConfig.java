@@ -10,7 +10,9 @@ import com.seraph.hrms.rest.endpoint.ConstantsEndpoint;
 import com.seraph.hrms.rest.endpoint.DependentEndpoint;
 import com.seraph.hrms.rest.endpoint.EmploymentEndpoint;
 import com.seraph.hrms.rest.endpoint.PersonnelEndpoint;
+import com.seraph.hrms.rest.endpoint.ReferenceEndpoint;
 import com.seraph.hrms.rest.endpoint.SecurityEndpoint;
+import com.seraph.hrms.rest.endpoint.SurveyResponseEndpoint;
 import com.seraph.hrms.rest.endpoint.UserEndpoint;
 
 /**
@@ -31,6 +33,8 @@ public class JerseyConfig extends ResourceConfig {
 		register(PersonnelEndpoint.class);
 		register(DependentEndpoint.class);
 		register(EmploymentEndpoint.class);
+		register(ReferenceEndpoint.class);
+		register(SurveyResponseEndpoint.class);
 		
 		register(ConstantsEndpoint.class);
 	}

@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seraph.hrms.UserContextHolder;
 import com.seraph.hrms.beans.PersonnelFormBean;
 import com.seraph.hrms.beans.ResultBean;
+import com.seraph.hrms.beans.SurveyResponseFormBean;
 import com.seraph.hrms.constants.FileConstants;
 import com.seraph.hrms.database.entity.Personnel;
 import com.seraph.hrms.database.entity.PersonnelImage;
 import com.seraph.hrms.database.service.PersonnelImageService;
 import com.seraph.hrms.database.service.PersonnelService;
 import com.seraph.hrms.enums.Color;
+import com.seraph.hrms.enums.SurveyQuestion;
 import com.seraph.hrms.objects.ObjectList;
 import com.seraph.hrms.rest.handler.PersonnelHandler;
+import com.seraph.hrms.rest.handler.SurveyResponseHandler;
 import com.seraph.hrms.rest.validator.PersonnelFormValidator;
 import com.seraph.hrms.utility.Html;
 import com.seraph.hrms.utility.StringHelper;
@@ -45,6 +50,9 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 	
 	@Autowired
 	private PersonnelFormValidator personnelFormValidator;
+	
+	@Autowired
+	private SurveyResponseHandler surveyResponseHandler;
 	
 	@Autowired
 	private FileConstants fileConstants;
@@ -77,12 +85,14 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 		if(errors.isEmpty()) {
 			final Personnel personnel = new Personnel();
 			
+			personnel.setImage(fileConstants.getImageDefaultFileName());
 			personnel.setCreator(UserContextHolder.getUser().getUserEntity());
 			setPersonnel(personnel, personnelForm);
 			
 			result = new ResultBean();
 			result.setSuccess(personnelService.insert(personnel) != null);
 			if(result.getSuccess()) {
+				createBlankSurvey(personnel);
 				result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " added personnel - " 
 								+ Html.text(Color.BLUE, 
 										personnel.getNamePrefix() + " " + personnel.getFirstName() + " " + personnel.getLastName()) + ". Thank you."));
@@ -276,5 +286,19 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 		personnel.setOrganization(personnelForm.getOrganization());
 		personnel.setSpecialSkills(personnelForm.getSpecialSkills());
 		personnel.setHobbies(personnelForm.getHobbies());
+	}
+	
+	private void createBlankSurvey(Personnel personnel) {
+		surveyResponseHandler.createSurveyResponse(
+				Stream.of(SurveyQuestion.values())
+					.parallel()
+					.map((sq) -> {
+						final SurveyResponseFormBean srf = new SurveyResponseFormBean();
+						srf.setSurveyQuestion(sq);
+						srf.setResponse("");
+						return srf;
+					})
+					.collect(Collectors.toList()),
+				personnel.getId());
 	}
 }

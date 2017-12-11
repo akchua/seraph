@@ -53,6 +53,7 @@
 				<value>com.seraph.hrms.database.entity.Dependent</value>
 				<value>com.seraph.hrms.database.entity.Employment</value>
 				<value>com.seraph.hrms.database.entity.Reference</value>
+				<value>com.seraph.hrms.database.entity.SurveyResponse</value>
 			</list>
 		</property>
 	</bean>
