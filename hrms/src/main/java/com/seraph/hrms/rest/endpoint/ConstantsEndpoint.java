@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.seraph.hrms.enums.CivilStatus;
+import com.seraph.hrms.enums.DocumentType;
 import com.seraph.hrms.enums.Gender;
 import com.seraph.hrms.enums.PersonnelPosition;
 import com.seraph.hrms.enums.UserType;
@@ -59,5 +60,12 @@ public class ConstantsEndpoint {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<CivilStatus> getCivilStatusList() {
 		return constantsHandler.getCivilStatusList();
+	}
+	
+	@GET
+	@Path("/documenttype")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public List<DocumentType> getDocumentTypeList() {
+		return constantsHandler.getDocumentTypeList();
 	}
 }

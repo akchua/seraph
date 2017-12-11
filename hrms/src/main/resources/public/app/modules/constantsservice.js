@@ -28,6 +28,12 @@ define(['jquery'], function ($) {
     		return $.ajax({
     			url: '/services/constants/civilstatus'
     		});
+    	},
+    	
+    	getDocumentTypeList: function() {
+    		return $.ajax({
+    			url: '/services/constants/documenttype'
+    		});
     	}
     };
 });

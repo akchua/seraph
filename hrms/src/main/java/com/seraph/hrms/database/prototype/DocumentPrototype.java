@@ -1,0 +1,1 @@
+package com.seraph.hrms.database.prototype;import com.seraph.hrms.database.entity.Document;/** * @author  Adrian Jasper K. Chua * @version 1.0 * @since   11 December 2017 */public interface DocumentPrototype extends Prototype<Document, Long> {}

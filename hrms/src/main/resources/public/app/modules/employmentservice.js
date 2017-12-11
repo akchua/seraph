@@ -12,6 +12,7 @@ define(['jquery'], function ($) {
 		getEmploymentList: function(currentPage, personnelId, searchKey) {
 			return $.ajax({
 				url: '/services/employment/list',
+				async: false,
 				data: {
 					pageNumber: currentPage - 1,
 					personnelId: personnelId,

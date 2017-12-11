@@ -2,6 +2,8 @@ package com.seraph.hrms.beans;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.seraph.hrms.deserializer.json.DateDeserializer;
 import com.seraph.hrms.enums.CivilStatus;
 import com.seraph.hrms.enums.Gender;
 import com.seraph.hrms.enums.PersonnelPosition;
@@ -31,6 +33,7 @@ public class PersonnelFormBean extends FormBean {
 	
 	private String birthplace;
 	
+	@JsonDeserialize(using = DateDeserializer.class)
 	private Date birthdate;
 	
 	private String height;

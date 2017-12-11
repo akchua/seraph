@@ -1,5 +1,5 @@
-define(['plugins/dialog', 'durandal/app', 'knockout', 'viewmodels/manage/personnel/personnelform', 'viewmodels/manage/personnel/personnelgallery', 'viewmodels/manage/personnel/dependent', 'viewmodels/manage/personnel/employment', 'viewmodels/manage/personnel/reference', 'viewmodels/manage/personnel/survey'], 
-		function (dialog, app, ko, PersonnelForm, PersonnelGallery, Dependent, Employment, Reference, Survey) {
+define(['plugins/dialog', 'durandal/app', 'knockout', 'viewmodels/manage/personnel/personnelform', 'viewmodels/manage/personnel/personnelgallery', 'viewmodels/manage/personnel/dependent', 'viewmodels/manage/personnel/employment', 'viewmodels/manage/personnel/reference', 'viewmodels/manage/personnel/survey', 'viewmodels/manage/personnel/document'], 
+		function (dialog, app, ko, PersonnelForm, PersonnelGallery, Dependent, Employment, Reference, Survey, Document) {
     var EditSelect = function(personnel) {
     	this.personnel = personnel;
     	
@@ -50,6 +50,12 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'viewmodels/manage/personn
     	var self = this;
 
     	Survey.show(self.personnel);
+    };
+    
+    EditSelect.prototype.editDocument = function() {
+    	var self = this;
+
+    	Document.show(self.personnel);
     };
     
     EditSelect.prototype.cancel = function() {

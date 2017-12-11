@@ -12,6 +12,7 @@ define(['jquery'], function ($) {
 		getReferenceList: function(currentPage, personnelId, searchKey) {
 			return $.ajax({
 				url: '/services/reference/list',
+				async: false,
 				data: {
 					pageNumber: currentPage - 1,
 					personnelId: personnelId,

@@ -12,6 +12,7 @@ define(['jquery'], function ($) {
 		getDependentList: function(currentPage, personnelId, searchKey) {
 			return $.ajax({
 				url: '/services/dependent/list',
+				async: false,
 				data: {
 					pageNumber: currentPage - 1,
 					personnelId: personnelId,

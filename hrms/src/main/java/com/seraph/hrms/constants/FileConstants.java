@@ -18,6 +18,8 @@ public class FileConstants {
 	
 	private final String personnelImageHome;
 	
+	private final String personnelDocumentHome;
+	
 	private final String imageDefaultFileName;
 	
 	@Autowired
@@ -26,6 +28,7 @@ public class FileConstants {
 		this.fileHome = fileHome;
 		this.userImageHome = fileHome + "program_data/user_image/";
 		this.personnelImageHome = fileHome + "program_data/personnel_image/";
+		this.personnelDocumentHome = fileHome + "program_data/personnel_document/";
 		this.imageDefaultFileName = imageDefaultFileName;
 	}
 
@@ -39,6 +42,10 @@ public class FileConstants {
 	
 	public String getPersonnelImageHome() {
 		return personnelImageHome;
+	}
+	
+	public String getPersonnelDocumentHome() {
+		return personnelDocumentHome;
 	}
 
 	public String getImageDefaultFileName() {

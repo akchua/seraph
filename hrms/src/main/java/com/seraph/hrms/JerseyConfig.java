@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 
 import com.seraph.hrms.rest.endpoint.ConstantsEndpoint;
 import com.seraph.hrms.rest.endpoint.DependentEndpoint;
+import com.seraph.hrms.rest.endpoint.DocumentEndpoint;
 import com.seraph.hrms.rest.endpoint.EmploymentEndpoint;
+import com.seraph.hrms.rest.endpoint.FileEndpoint;
 import com.seraph.hrms.rest.endpoint.PersonnelEndpoint;
 import com.seraph.hrms.rest.endpoint.ReferenceEndpoint;
 import com.seraph.hrms.rest.endpoint.SecurityEndpoint;
@@ -35,7 +37,9 @@ public class JerseyConfig extends ResourceConfig {
 		register(EmploymentEndpoint.class);
 		register(ReferenceEndpoint.class);
 		register(SurveyResponseEndpoint.class);
+		register(DocumentEndpoint.class);
 		
+		register(FileEndpoint.class);
 		register(ConstantsEndpoint.class);
 	}
 }

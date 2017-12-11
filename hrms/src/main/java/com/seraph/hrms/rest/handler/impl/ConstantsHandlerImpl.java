@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.seraph.hrms.constants.SystemConstants;
 import com.seraph.hrms.enums.CivilStatus;
+import com.seraph.hrms.enums.DocumentType;
 import com.seraph.hrms.enums.Gender;
 import com.seraph.hrms.enums.PersonnelPosition;
 import com.seraph.hrms.enums.UserType;
@@ -48,5 +49,10 @@ public class ConstantsHandlerImpl implements ConstantsHandler {
 	@Override
 	public List<CivilStatus> getCivilStatusList() {
 		return Stream.of(CivilStatus.values()).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<DocumentType> getDocumentTypeList() {
+		return Stream.of(DocumentType.values()).collect(Collectors.toList());
 	}
 }

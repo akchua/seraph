@@ -3,6 +3,7 @@ package com.seraph.hrms.rest.handler;
 import java.util.List;
 
 import com.seraph.hrms.enums.CivilStatus;
+import com.seraph.hrms.enums.DocumentType;
 import com.seraph.hrms.enums.Gender;
 import com.seraph.hrms.enums.PersonnelPosition;
 import com.seraph.hrms.enums.UserType;
@@ -23,4 +24,6 @@ public interface ConstantsHandler {
 	List<PersonnelPosition> getPersonnelPositionList();
 	
 	List<CivilStatus> getCivilStatusList();
+	
+	List<DocumentType> getDocumentTypeList();
 }
