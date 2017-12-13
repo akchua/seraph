@@ -48,11 +48,13 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/employmentservice
         	if(result.success) {
         		dialog.close(self);
         	} else {
-        		self.errors.companyName(result.extras.errors.companyName);
-        		self.errors.position(result.extras.errors.position);
-        		self.errors.salary(result.extras.errors.salary);
-        		self.errors.years(result.extras.errors.years);
-        		self.errors.causeOfDischarge(result.extras.errors.causeOfDischarge);
+        		if(result.extras && result.extras.errors) {
+	        		self.errors.companyName(result.extras.errors.companyName);
+	        		self.errors.position(result.extras.errors.position);
+	        		self.errors.salary(result.extras.errors.salary);
+	        		self.errors.years(result.extras.errors.years);
+	        		self.errors.causeOfDischarge(result.extras.errors.causeOfDischarge);
+        		}
         	}
         	if(result.message) app.showMessage(result.message);
         });

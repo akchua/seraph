@@ -71,7 +71,6 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/userservice', 'mo
         		self.errors.username(result.extras.errors.username);
         		self.errors.password(result.extras.errors.password);
         		self.errors.confirmPassword(result.extras.errors.confirmPassword);
-        		self.errors.itemsPerPage(result.extras.errors.itemsPerPage);
         		self.errors.userType(result.extras.errors.userType);
         	}
         	if(result.message) app.showMessage(result.message);

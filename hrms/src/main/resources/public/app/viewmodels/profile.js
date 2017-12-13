@@ -56,10 +56,12 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/userservice', 'vi
         	if(result.success) {
         		dialog.close(self);	
         	} else {
-        		self.errors.firstName(result.extras.errors.firstName);
-        		self.errors.lastName(result.extras.errors.lastName);
-        		self.errors.contactNumber(result.extras.errors.contactNumber);
-        		self.errors.emailAddress(result.extras.errors.emailAddress);
+        		if(result.extras && result.extras.errors) {
+	        		self.errors.firstName(result.extras.errors.firstName);
+	        		self.errors.lastName(result.extras.errors.lastName);
+	        		self.errors.contactNumber(result.extras.errors.contactNumber);
+	        		self.errors.emailAddress(result.extras.errors.emailAddress);
+        		}
         	}
         	if(result.message) app.showMessage(result.message);
         });

@@ -21,6 +21,7 @@ import com.seraph.hrms.database.entity.Personnel;
 import com.seraph.hrms.database.service.DocumentService;
 import com.seraph.hrms.database.service.PersonnelService;
 import com.seraph.hrms.enums.Color;
+import com.seraph.hrms.enums.DocumentType;
 import com.seraph.hrms.objects.ObjectList;
 import com.seraph.hrms.rest.handler.DocumentHandler;
 import com.seraph.hrms.rest.validator.DocumentFormValidator;
@@ -57,6 +58,12 @@ public class DocumentHandlerImpl implements DocumentHandler {
 	public ObjectList<Document> getDocumentObjectList(Integer pageNumber, Long personnelId, String searchKey) {
 		return documentService.findAllByPersonnelWithPagingOrderByType(pageNumber, UserContextHolder.getItemsPerPage(), personnelId, searchKey);
 	}
+	
+	@Override
+	public ObjectList<Document> getDocumentObjectListByExpirationDate(Integer pageNumber, DocumentType documentType, 
+			String searchKey) {
+		return documentService.findAllWithPagingOrderByExpirationDate(pageNumber, UserContextHolder.getItemsPerPage(), documentType, searchKey);
+	}
 
 	@Override
 	public ResultBean createDocument(DocumentFormBean documentForm, Long personnelId, InputStream in,
@@ -65,28 +72,37 @@ public class DocumentHandlerImpl implements DocumentHandler {
 		final Personnel personnel = personnelService.find(personnelId);
 		
 		if(personnel != null) {
-			final Map<String, String> errors = documentFormValidator.validate(documentForm);
+			final Document documentz = documentService.findByPersonnelAndType(personnelId, documentForm.getDocumentType());
 			
-			if(errors.isEmpty()) {
-				final Document document = new Document();
+			if(documentz == null) {
+				final Map<String, String> errors = documentFormValidator.validate(documentForm);
 				
-				document.setPersonnel(personnel);
-				document.setDocumentType(documentForm.getDocumentType());
-				setDocument(document, documentForm);
-				
-				result = new ResultBean();
-				result.setSuccess(documentService.insert(document) != null);
-				if(result.getSuccess()) {
-					saveDocumentFile(document, in, info);
-					result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " added document - " 
-									+ Html.text(Color.BLUE, 
-											document.getDocumentType().getDisplayName()) + ". Thank you."));
+				if(errors.isEmpty()) {
+					final Document document = new Document();
+					
+					document.setPersonnel(personnel);
+					document.setDocumentType(documentForm.getDocumentType());
+					setDocument(document, documentForm);
+					
+					result = new ResultBean();
+					result.setSuccess(documentService.insert(document) != null);
+					if(result.getSuccess()) {
+						if(info.getFileName() != null) saveDocumentFile(document, in, info);
+						result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " added document - " 
+										+ Html.text(Color.BLUE, 
+												document.getDocumentType().getDisplayName()) + ". Thank you."));
+					} else {
+						result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
+					}
 				} else {
-					result.setMessage(Html.line(Html.text(Color.RED, "Server Error.") + " Please try again later."));
+					result = new ResultBean(Boolean.FALSE, "");
+					result.addToExtras("errors", errors);
 				}
 			} else {
-				result = new ResultBean(Boolean.FALSE, "");
-				result.addToExtras("errors", errors);
+				result = new ResultBean(Boolean.FALSE, Html.line(Html.text(Color.RED, documentForm.getDocumentType().getDisplayName()) + " document already exists for " 
+								+ Html.text(Color.BLUE, 
+										personnel.getNamePrefix() + " " + personnel.getFirstName() + " " + personnel.getLastName()) 
+								+ ". To renew please edit or remove the existing document."));
 			}
 		} else {
 			result = new ResultBean(Boolean.FALSE, Html.line(Html.text(Color.RED, "Failed") + " to load personnel. Please refresh the page."));
@@ -109,7 +125,7 @@ public class DocumentHandlerImpl implements DocumentHandler {
 			result = new ResultBean();
 			result.setSuccess(documentService.update(document));
 			if(result.getSuccess()) {
-				if(info.getSize() != 0l) saveDocumentFile(document, in, info);
+				if(info.getFileName() != null) saveDocumentFile(document, in, info);
 				result.setMessage(Html.line(Html.text(Color.GREEN, "Successfully") + " updated document - " 
 								+ Html.text(Color.BLUE,
 										document.getDocumentType().getDisplayName()) + ". Thank you."));

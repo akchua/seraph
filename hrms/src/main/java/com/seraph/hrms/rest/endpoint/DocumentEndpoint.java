@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.seraph.hrms.beans.DocumentFormBean;
 import com.seraph.hrms.beans.ResultBean;
 import com.seraph.hrms.database.entity.Document;
+import com.seraph.hrms.enums.DocumentType;
 import com.seraph.hrms.objects.ObjectList;
 import com.seraph.hrms.rest.handler.DocumentHandler;
 
@@ -48,6 +49,15 @@ public class DocumentEndpoint {
 			@QueryParam("personnelId") Long personnelId,
 			@QueryParam("searchKey") String searchKey) {
 		return documentHandler.getDocumentObjectList(pageNumber, personnelId, searchKey);
+	}
+	
+	@GET
+	@Path("/listbyexpiration")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public ObjectList<Document> getDocumentObjectListByExpirationDate(@QueryParam("pageNumber") Integer pageNumber, 
+			@QueryParam("documentType") DocumentType documentType,
+			@QueryParam("searchKey") String searchKey) {
+		return documentHandler.getDocumentObjectListByExpirationDate(pageNumber, documentType, searchKey);
 	}
 	
 	@POST

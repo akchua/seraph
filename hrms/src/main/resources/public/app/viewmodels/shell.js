@@ -16,6 +16,14 @@
    	  	}
    	];
 	
+	var reportroute = [
+   	  	{ route: 'report', moduleRootId: 'viewmodels/report', title: '', nav: true, hash: '#report',
+   	  		childRoutes: [
+   	  		    { route: 'document', moduleId: 'documentreport', title: 'Documents', nav: true, hash: 'document' }
+   	  		]
+   	  	}
+   	];
+	
 	var Shell = function() {
 		this.router = router;
 		
@@ -54,6 +62,7 @@
 	    		case 'ADMINISTRATOR':
 	    			self.routes = self.routes.concat(userroute);
 	    			self.routes = self.routes.concat(manageroute);
+	    			self.routes = self.routes.concat(reportroute);
 	    			break;
     		}
 		}

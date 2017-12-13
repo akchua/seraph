@@ -34,12 +34,14 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/userservice'], fu
         	if(result.success) {
         		dialog.close(self);	
         	}  else {
-        		self.passwordFormModel.oldPassword('');
-        		self.passwordFormModel.password('');
-        		self.passwordFormModel.confirmPassword('');
-        		self.errors.oldPassword(result.extras.errors.oldPassword);
-        		self.errors.password(result.extras.errors.password);
-        		self.errors.confirmPassword(result.extras.errors.confirmPassword);
+        		if(result.extras && result.extras.errors) {
+	        		self.passwordFormModel.oldPassword('');
+	        		self.passwordFormModel.password('');
+	        		self.passwordFormModel.confirmPassword('');
+	        		self.errors.oldPassword(result.extras.errors.oldPassword);
+	        		self.errors.password(result.extras.errors.password);
+	        		self.errors.confirmPassword(result.extras.errors.confirmPassword);
+        		}
         	}
         	if(result.message) app.showMessage(result.message);
         });

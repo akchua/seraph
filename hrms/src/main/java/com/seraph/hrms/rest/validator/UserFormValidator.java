@@ -32,8 +32,6 @@ public class UserFormValidator extends AbstractFormValidator<UserFormBean> {
 		if(!temp.isEmpty()) errors.put("contactNumber", temp);
 		temp = validateUsername(userForm.getUsername());
 		if(!temp.isEmpty()) errors.put("username", temp);
-		temp = validateItemsPerPage(userForm.getItemsPerPage());
-		if(!temp.isEmpty()) errors.put("itemsPerPage", temp);
 		temp = validateUserType(userForm.getUserType());
 		if(!temp.isEmpty()) errors.put("userType", temp);
 		
@@ -58,10 +56,6 @@ public class UserFormValidator extends AbstractFormValidator<UserFormBean> {
 	
 	private String validateUsername(String username) {
 		return notNull(username, (s) -> s.trim().matches("^[A-Za-z_]\\w{3,30}$") ? "" : "Username must be at least 3 to 30 characters and cannot contain white spaces and/or special characters.");
-	}
-	
-	private String validateItemsPerPage(Integer itemsPerPage) {
-		return notNull(itemsPerPage);
 	}
 	
 	private String validateUserType(UserType userType) {

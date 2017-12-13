@@ -52,10 +52,12 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/documentservice',
         	if(result.success) {
         		dialog.close(self);
         	} else {
-        		self.errors.documentType(result.extras.errors.documentType);
-        		self.errors.expirationDate(result.extras.errors.expirationDate);
-        		self.errors.identificationNumber(result.extras.errors.identificationNumber);
-        		self.errors.remarks(result.extras.errors.remarks);
+        		if(result.extras && result.extras.errors) {
+        			self.errors.documentType(result.extras.errors.documentType);
+        			self.errors.expirationDate(result.extras.errors.expirationDate);
+            		self.errors.identificationNumber(result.extras.errors.identificationNumber);
+            		self.errors.remarks(result.extras.errors.remarks);
+        		}
         	}
         	if(result.message) app.showMessage(result.message);
         });

@@ -106,7 +106,9 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/surveyresponseser
     		} else {
     			self.index(self.prevIndex);
     			self.closeModal = false;
-    			self.errors.response(result.extras.errors.response);
+    			if(result.extras && result.extras.errors) {
+    				self.errors.response(result.extras.errors.response);
+    			}
     		}
     	});
     };

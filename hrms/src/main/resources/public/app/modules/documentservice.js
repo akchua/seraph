@@ -21,6 +21,18 @@ define(['jquery'], function ($) {
 			});
 		},
 		
+		getDocumentListByExpirationDate: function(currentPage, documentType, searchKey) {
+			return $.ajax({
+				url: '/services/document/listbyexpiration',
+				async: false,
+				data: {
+					pageNumber: currentPage - 1,
+					documentType: documentType,
+					searchKey: searchKey
+				}
+			});
+		},
+		
 		saveDocument: function(documentFormData, personnelId, file) {
 			var formData = new FormData();
     		formData.append('documentFormData', documentFormData);

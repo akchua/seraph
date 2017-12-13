@@ -53,11 +53,13 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/dependentservice'
         	if(result.success) {
         		dialog.close(self);
         	} else {
-        		self.errors.firstName(result.extras.errors.firstName);
-        		self.errors.lastName(result.extras.errors.lastName);
-        		self.errors.age(result.extras.errors.age);
-        		self.errors.gender(result.extras.errors.gender);
-        		self.errors.relationship(result.extras.errors.relationship);
+        		if(result.extras && result.extras.errors) {
+	        		self.errors.firstName(result.extras.errors.firstName);
+	        		self.errors.lastName(result.extras.errors.lastName);
+	        		self.errors.age(result.extras.errors.age);
+	        		self.errors.gender(result.extras.errors.gender);
+	        		self.errors.relationship(result.extras.errors.relationship);
+        		}
         	}
         	if(result.message) app.showMessage(result.message);
         });

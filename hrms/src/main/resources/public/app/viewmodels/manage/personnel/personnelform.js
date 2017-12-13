@@ -202,53 +202,55 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'jquery', 'modules/personn
         	} else {
         		$('#personnelFormModal').animate({ scrollTop: 0 }, 'slow');
         		self.enableSave(true);
-        		self.errors.personnelPosition(result.extras.errors.personnelPosition);
-        		self.errors.firstName(result.extras.errors.firstName);
-        		self.errors.lastName(result.extras.errors.lastName);
-        		self.errors.middleName(result.extras.errors.middleName);
-        		self.errors.contactNumber(result.extras.errors.contactNumber);
-        		self.errors.cityAddress(result.extras.errors.cityAddress);
-        		self.errors.birthdate(result.extras.errors.birthdate);
-        		self.errors.gender(result.extras.errors.gender);
-        		self.errors.civilStatus(result.extras.errors.civilStatus);
-
-        		self.errors.height(result.extras.errors.height);
-        		self.errors.weight(result.extras.errors.weight);
-        		self.errors.hairColor(result.extras.errors.hairColor);
-        		self.errors.eyeColor(result.extras.errors.eyeColor);
-        		self.errors.complexion(result.extras.errors.complexion);
-        		self.errors.identifyingMarks(result.extras.errors.identifyingMarks);
-
-        		self.errors.motherMaidenName(result.extras.errors.motherMaidenName);
-        		self.errors.birthplace(result.extras.errors.birthplace);
-        		self.errors.provincialAddress(result.extras.errors.provincialAddress);
-        		self.errors.dialectsSpoken(result.extras.errors.dialectsSpoken);
-        		self.errors.religion(result.extras.errors.religion);
-
-        		self.errors.nameOfSpouse(result.extras.errors.nameOfSpouse);
-        		self.errors.occupationOfSpouse(result.extras.errors.occupationOfSpouse);
-        		self.errors.nameOfFather(result.extras.errors.nameOfFather);
-        		self.errors.occupationOfFather(result.extras.errors.occupationOfFather);
-        		self.errors.nameOfMother(result.extras.errors.nameOfMother);
-        		self.errors.occupationOfMother(result.extras.errors.occupationOfMother);
-
-        		self.errors.emergencyContactPerson(result.extras.errors.emergencyContactPerson);
-        		self.errors.contactPersonRelation(result.extras.errors.contactPersonRelation);
-        		self.errors.contactPersonAddress(result.extras.errors.contactPersonAddress);
-        		self.errors.recommendedBy(result.extras.errors.recommendedBy);
-
-        		self.errors.highSchool(result.extras.errors.highSchool);
-        		self.errors.highSchoolGradYear(result.extras.errors.highSchoolGradYear);
-        		self.errors.vocationalSchool(result.extras.errors.vocationalSchool);
-        		self.errors.vocationalSchoolGradYear(result.extras.errors.vocationalSchoolGradYear);
-        		self.errors.college(result.extras.errors.college);
-        		self.errors.collegeDegree(result.extras.errors.collegeDegree);
-        		self.errors.collegeGradYear(result.extras.errors.collegeGradYear);
-        		self.errors.lastSecuritySchool(result.extras.errors.lastSecuritySchool);
-
-        		self.errors.organization(result.extras.errors.organization);
-        		self.errors.specialSkills(result.extras.errors.specialSkills);
-        		self.errors.hobbies(result.extras.errors.hobbies);
+        		if(result.extras && result.extras.errors) {
+	        		self.errors.personnelPosition(result.extras.errors.personnelPosition);
+	        		self.errors.firstName(result.extras.errors.firstName);
+	        		self.errors.lastName(result.extras.errors.lastName);
+	        		self.errors.middleName(result.extras.errors.middleName);
+	        		self.errors.contactNumber(result.extras.errors.contactNumber);
+	        		self.errors.cityAddress(result.extras.errors.cityAddress);
+	        		self.errors.birthdate(result.extras.errors.birthdate);
+	        		self.errors.gender(result.extras.errors.gender);
+	        		self.errors.civilStatus(result.extras.errors.civilStatus);
+	
+	        		self.errors.height(result.extras.errors.height);
+	        		self.errors.weight(result.extras.errors.weight);
+	        		self.errors.hairColor(result.extras.errors.hairColor);
+	        		self.errors.eyeColor(result.extras.errors.eyeColor);
+	        		self.errors.complexion(result.extras.errors.complexion);
+	        		self.errors.identifyingMarks(result.extras.errors.identifyingMarks);
+	
+	        		self.errors.motherMaidenName(result.extras.errors.motherMaidenName);
+	        		self.errors.birthplace(result.extras.errors.birthplace);
+	        		self.errors.provincialAddress(result.extras.errors.provincialAddress);
+	        		self.errors.dialectsSpoken(result.extras.errors.dialectsSpoken);
+	        		self.errors.religion(result.extras.errors.religion);
+	
+	        		self.errors.nameOfSpouse(result.extras.errors.nameOfSpouse);
+	        		self.errors.occupationOfSpouse(result.extras.errors.occupationOfSpouse);
+	        		self.errors.nameOfFather(result.extras.errors.nameOfFather);
+	        		self.errors.occupationOfFather(result.extras.errors.occupationOfFather);
+	        		self.errors.nameOfMother(result.extras.errors.nameOfMother);
+	        		self.errors.occupationOfMother(result.extras.errors.occupationOfMother);
+	
+	        		self.errors.emergencyContactPerson(result.extras.errors.emergencyContactPerson);
+	        		self.errors.contactPersonRelation(result.extras.errors.contactPersonRelation);
+	        		self.errors.contactPersonAddress(result.extras.errors.contactPersonAddress);
+	        		self.errors.recommendedBy(result.extras.errors.recommendedBy);
+	
+	        		self.errors.highSchool(result.extras.errors.highSchool);
+	        		self.errors.highSchoolGradYear(result.extras.errors.highSchoolGradYear);
+	        		self.errors.vocationalSchool(result.extras.errors.vocationalSchool);
+	        		self.errors.vocationalSchoolGradYear(result.extras.errors.vocationalSchoolGradYear);
+	        		self.errors.college(result.extras.errors.college);
+	        		self.errors.collegeDegree(result.extras.errors.collegeDegree);
+	        		self.errors.collegeGradYear(result.extras.errors.collegeGradYear);
+	        		self.errors.lastSecuritySchool(result.extras.errors.lastSecuritySchool);
+	
+	        		self.errors.organization(result.extras.errors.organization);
+	        		self.errors.specialSkills(result.extras.errors.specialSkills);
+	        		self.errors.hobbies(result.extras.errors.hobbies);
+        		}
         	}
         	if(result.message) app.showMessage(result.message);
         });
