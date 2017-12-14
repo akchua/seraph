@@ -45,11 +45,12 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'jquery', 'modules/personn
     		occupationOfFather: ko.observable(),
     		nameOfMother: ko.observable(),
     		occupationOfMother: ko.observable(),
+    		recommendedBy: ko.observable(),
     		// in case of emergency
     		emergencyContactPerson: ko.observable(),
     		contactPersonRelation: ko.observable(),
     		contactPersonAddress: ko.observable(),
-    		recommendedBy: ko.observable(),
+    		contactPersonNumber: ko.observable(),
     		//EDUCATION
     		highSchool: ko.observable(),
     		highSchoolGradYear: ko.observable(),
@@ -98,11 +99,12 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'jquery', 'modules/personn
     		occupationOfFather: ko.observable(),
     		nameOfMother: ko.observable(),
     		occupationOfMother: ko.observable(),
+    		recommendedBy: ko.observable(),
     		// in case of emergency
     		emergencyContactPerson: ko.observable(),
     		contactPersonRelation: ko.observable(),
     		contactPersonAddress: ko.observable(),
-    		recommendedBy: ko.observable(),
+    		contactPersonNumber: ko.observable(),
     		//EDUCATION
     		highSchool: ko.observable(),
     		highSchoolGradYear: ko.observable(),
@@ -153,11 +155,12 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'jquery', 'modules/personn
     	self.personnelFormModel.occupationOfFather(self.personnel.occupationOfFather);
     	self.personnelFormModel.nameOfMother(self.personnel.nameOfMother);
     	self.personnelFormModel.occupationOfMother(self.personnel.occupationOfMother);
+    	self.personnelFormModel.recommendedBy(self.personnel.recommendedBy);
     	
     	self.personnelFormModel.emergencyContactPerson(self.personnel.emergencyContactPerson);
     	self.personnelFormModel.contactPersonRelation(self.personnel.contactPersonRelation);
     	self.personnelFormModel.contactPersonAddress(self.personnel.contactPersonAddress);
-    	self.personnelFormModel.recommendedBy(self.personnel.recommendedBy);
+    	self.personnelFormModel.contactPersonNumber(self.personnel.contactPersonNumber);
     	
     	self.personnelFormModel.highSchool(self.personnel.highSchool);
     	self.personnelFormModel.highSchoolGradYear(self.personnel.highSchoolGradYear);
@@ -232,11 +235,12 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'jquery', 'modules/personn
 	        		self.errors.occupationOfFather(result.extras.errors.occupationOfFather);
 	        		self.errors.nameOfMother(result.extras.errors.nameOfMother);
 	        		self.errors.occupationOfMother(result.extras.errors.occupationOfMother);
+	        		self.errors.recommendedBy(result.extras.errors.recommendedBy);
 	
 	        		self.errors.emergencyContactPerson(result.extras.errors.emergencyContactPerson);
 	        		self.errors.contactPersonRelation(result.extras.errors.contactPersonRelation);
 	        		self.errors.contactPersonAddress(result.extras.errors.contactPersonAddress);
-	        		self.errors.recommendedBy(result.extras.errors.recommendedBy);
+	        		self.errors.contactPersonNumber(result.extras.errors.contactPersonNumber);
 	
 	        		self.errors.highSchool(result.extras.errors.highSchool);
 	        		self.errors.highSchoolGradYear(result.extras.errors.highSchoolGradYear);

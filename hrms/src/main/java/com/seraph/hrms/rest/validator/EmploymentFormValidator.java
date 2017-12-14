@@ -36,11 +36,11 @@ public class EmploymentFormValidator extends AbstractFormValidator<EmploymentFor
 	}
 	
 	private String validateCompanyName(String companyName) {
-		return validateString(companyName, 2, 20);
+		return validateString(companyName, 2, 100);
 	}
 	
 	private String validatePosition(String position) {
-		return validateString(position, 2, 20);
+		return validateString(position, 2, 40);
 	}
 	
 	private String validateSalary(Float salary) {

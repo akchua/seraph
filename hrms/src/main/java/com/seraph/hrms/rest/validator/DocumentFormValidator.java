@@ -28,7 +28,7 @@ public class DocumentFormValidator extends AbstractFormValidator<DocumentFormBea
 		if(!temp.isEmpty()) errors.put("documentType", temp);
 		temp = validateExpirationDate(documentForm.getExpirationDate());
 		if(!temp.isEmpty()) errors.put("expirationDate", temp);
-		temp = validateIdentificationNumber(documentForm.getIdentificationNumber());
+		temp = validateIdentificationNumber(documentForm.getIdentificationNumber(), documentForm.getDocumentType());
 		if(!temp.isEmpty()) errors.put("identificationNumber", temp);
 		temp = validateRemarks(documentForm.getRemarks());
 		if(!temp.isEmpty()) errors.put("remarks", temp);
@@ -56,11 +56,11 @@ public class DocumentFormValidator extends AbstractFormValidator<DocumentFormBea
 		return ret;
 	}
 	
-	private String validateIdentificationNumber(String identificationNumber) {
-		return validateStringNull(identificationNumber, 2, 20);
+	private String validateIdentificationNumber(String identificationNumber, DocumentType documentType) {
+		return documentType.equals(DocumentType.ATM_APPLICATION) ? validateString(identificationNumber, 10, 10) : validateStringNull(identificationNumber, 0, 20);
 	}
 	
 	private String validateRemarks(String remarks) {
-		return validateStringNull(remarks, 2, 40);
+		return validateStringNull(remarks, 0, 40);
 	}
 }

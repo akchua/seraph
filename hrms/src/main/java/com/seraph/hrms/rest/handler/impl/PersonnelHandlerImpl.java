@@ -274,6 +274,7 @@ public class PersonnelHandlerImpl implements PersonnelHandler {
 		personnel.setEmergencyContactPerson(personnelForm.getEmergencyContactPerson());
 		personnel.setContactPersonRelation(personnelForm.getContactPersonRelation());
 		personnel.setContactPersonAddress(personnelForm.getContactPersonAddress());
+		personnel.setContactPersonNumber(personnelForm.getContactPersonNumber());
 		personnel.setRecommendedBy(personnelForm.getRecommendedBy());
 		personnel.setHighSchool(personnelForm.getHighSchool());
 		personnel.setHighSchoolGradYear(personnelForm.getHighSchoolGradYear());

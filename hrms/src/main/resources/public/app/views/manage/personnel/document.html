@@ -28,6 +28,7 @@
 						<tr>
 							<th>Type</th>
 							<th>Expiration Date</th>
+							<th class="text-center">Expires in (days)</th>
 							<th>Identification Number</th>
 							<th>Remarks</th>
 							<th class="text-center">Attachment</th>
@@ -38,6 +39,7 @@
 						<tr>
 							<td data-bind="text: document.documentType.displayName"></td>
 							<td data-bind="text: document.prettyExpirationDate"></td>
+							<td data-bind="text: document.daysBeforeExpiration" class="text-center"></td>
 							<td data-bind="text: document.identifcationNumber"></td>
 							<td data-bind="text: document.remarks"></td>
 							<td data-bind="text: document.hasAttachments" class="text-center"></td>

@@ -23,6 +23,7 @@
 					<th>Personnel</th>
 					<th>Document</th>
 					<th>Expiration Date</th>
+					<th class="text-center">Expires in (days)</th>
 				</tr>
 			</thead>
 			
@@ -36,6 +37,7 @@
 					</td>
 					<td data-bind="text: document.documentType.displayName"></td>
 					<td data-bind="text: document.prettyExpirationDate"></td>
+					<td data-bind="text: document.daysBeforeExpiration" class="text-center"></td>
 				</tr>
 			</tbody>
 		</table>

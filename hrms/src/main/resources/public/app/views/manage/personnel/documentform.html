@@ -20,17 +20,17 @@
 						<input data-bind="value: documentFormModel.expirationDate" type="date" id="expirationDate" name="expirationDate" class="form-control" />
 						<p data-bind="text: errors.expirationDate" class="text-danger"></p>
 					</div>
-					<label class="control-label" for="identificationNumber">Identification Number</label>
+					<label class="control-label" for="identificationNumber">Identification Number <span class="text-muted">(If Any)</span></label>
 					<div class="controls">
 						<input data-bind="textInput: documentFormModel.identificationNumber" type="text" id="identificationNumber" name="identificationNumber" placeholder="" class="form-control input-lg">
 						<p data-bind="text: errors.identificationNumber" class="text-danger"></p>
 					</div>
-					<label class="control-label" for="remarks">Remarks</label>
+					<label class="control-label" for="remarks">Remarks <span class="text-muted">(Optional)</span></label>
 					<div class="controls">
 						<input data-bind="textInput: documentFormModel.remarks" type="text" id="remarks" name="remarks" placeholder="" class="form-control input-lg">
 						<p data-bind="text: errors.remarks" class="text-danger"></p>
 					</div>
-					<label class="control-label" for="attachment">Attachment</label>
+					<label class="control-label" for="attachment">Attachment <span class="text-muted">(Optional)</span></label>
 					<div class="controls">
 						<span class="pull-left">
 							<input data-bind="event: { change : function() { file($element.files[0]) } }" type="file" name="file" id="file" class="inputfile" />

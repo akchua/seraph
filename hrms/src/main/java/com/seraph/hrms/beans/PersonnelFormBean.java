@@ -74,6 +74,8 @@ public class PersonnelFormBean extends FormBean {
 	
 	private String contactPersonAddress;
 	
+	private String contactPersonNumber;
+	
 	private String recommendedBy;
 	
 	private String highSchool;
@@ -328,6 +330,14 @@ public class PersonnelFormBean extends FormBean {
 
 	public void setContactPersonAddress(String contactPersonAddress) {
 		this.contactPersonAddress = contactPersonAddress;
+	}
+
+	public String getContactPersonNumber() {
+		return contactPersonNumber;
+	}
+
+	public void setContactPersonNumber(String contactPersonNumber) {
+		this.contactPersonNumber = contactPersonNumber;
 	}
 
 	public String getRecommendedBy() {

@@ -45,7 +45,7 @@ public class DependentFormValidator extends AbstractFormValidator<DependentFormB
 	}
 	
 	private String validateAge(Integer age) {
-		return validateInteger(age, 0, 23);
+		return validateInteger(age, 0, 200);
 	}
 	
 	private String validateGender(Gender gender) {
