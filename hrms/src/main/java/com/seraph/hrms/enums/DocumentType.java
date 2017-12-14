@@ -12,41 +12,43 @@ public enum DocumentType {
 
 	PS_LICENSE("P.S. License"),
 	
-	INSURANCE("Insurance"),
+	ATM_APPLICATION("ATM Application"),
 	
-	TRAINING_CERTIFICATE("Training Certificate"),
+	BARANGAY_CLEARANCE("Barangay Clearance"),
 	
-	NBI_CLEARANCE("NBI Clearance"),
-	
-	DRUG_TEST("Drug Test"),
-	
-	MEDICAL_CERTIFICATE("Medical Certificate"),
-	
-	DIPLOMA_TOR("Diploma or TOR"),
+	BIR_TIN("BIR/TIN"),
 	
 	BIRTH_CERTIFICATE("Birth Certificate(NSO)"),
 	
 	CERTIFICATE_OF_EMPLOYMENT("Certificate of Employment"),
-
-	WHOLE_BODY_PICTURE("Whole Body Picture(In Uniform)"),
-	
-	POLICE_CLEARANCE("Police Clearance"),
 	
 	COURT_CLEARANCE("Court/RID Clearance"),
 	
-	SSS("SSS(E-1)"),
+	DIPLOMA_TOR("Diploma or TOR"),
 	
-	BIR_TIN("BIR/TIN"),
+	DRUG_TEST("Drug Test"),
 	
-	PHILHEALTH("Philhealth"),
+	INSURANCE("Insurance"),
 	
-	PAG_IBIG("Pag-ibig"),
+	MEDICAL_CERTIFICATE("Medical Certificate"),
+	
+	NBI_CLEARANCE("NBI Clearance"),
 	
 	NP_CLEARANCE("NP Clearance"),
 	
-	ATM_APPLICATION("ATM Application"),
+	PAG_IBIG("Pag-ibig"),
 	
-	PMRF("PMRF");
+	PHILHEALTH("Philhealth"),
+	
+	PMRF("PMRF"),
+	
+	POLICE_CLEARANCE("Police Clearance"),
+	
+	SSS("SSS(E-1)"),
+	
+	TRAINING_CERTIFICATE("Training Certificate"),
+	
+	WHOLE_BODY_PICTURE("Whole Body Picture(In Uniform)");
 	
 	private final String displayName;
 	
